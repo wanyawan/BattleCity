@@ -18,9 +18,22 @@ Tank::~Tank()
 
 bool Tank::init(int type)
 {
-    _type = type;
-    return Sprite::init();
+    bool result = Sprite::init();
+    if (result) {
+        _type = type;
+    }
+    return result;
 }
+
+//void Tank::setupPhysicsBody()
+//{    
+//    auto body = PhysicsBody::createBox(this->getContentSize());
+//    body->setCategoryBitmask(0x01);
+//    body->setContactTestBitmask(0x01);
+//    body->setCollisionBitmask(0x01);
+//    body->setGroup(0);
+//    this->setPhysicsBody(body);
+//}
 
 void Tank::setPos(Vec2 pos, Direction direction)
 {
@@ -32,8 +45,8 @@ void Tank::setPos(Vec2 pos, Direction direction)
 
 void Tank::moveUp()
 {
-    //_newPos.y = _position.y + _speed * 60 * _dt;
-    _newPos.y = _position.y + _speed;
+//    _newPos.y = _position.y + _speed * 60 * _dt;
+    _newPos.y = _position.y + 0.5;
     this->addStep();
 }
 
@@ -88,30 +101,30 @@ void Tank::turnDown()
 
 void Tank::adjustPosX()
 {
-    auto n = _position.x / CELL_WIDTH;
-    if ((int)(n * 10) % 10 < 4) // 判断坦克坐标接近哪一列
-    {
-        _newPos.x = (int)n * CELL_WIDTH;
-    }
-    else
-    {
-        _newPos.x = (int)(n+1) * CELL_WIDTH;
-    }
-    this->setPositionX(_newPos.x);
+//    auto n = _position.x / CELL_WIDTH;
+//    if ((int)(n * 10) % 10 < 4) // 判断坦克坐标接近哪一列
+//    {
+//        _newPos.x = (int)n * CELL_WIDTH;
+//    }
+//    else
+//    {
+//        _newPos.x = (int)(n+1) * CELL_WIDTH;
+//    }
+//    this->setPositionX(_newPos.x);
 }
 
 void Tank::adjustPosY()
 {
-    auto n = _position.y / CELL_HEIGHT;
-    if ((int)(n * 10) % 10 < 4) // 判断坦克坐标接近哪一行
-    {
-        _newPos.y = (int)n * CELL_HEIGHT;
-    }
-    else
-    {
-        _newPos.y = (int)(n + 1) * CELL_HEIGHT;
-    }
-    this->setPositionY(_newPos.y);
+//    auto n = _position.y / CELL_HEIGHT;
+//    if ((int)(n * 10) % 10 < 4) // 判断坦克坐标接近哪一行
+//    {
+//        _newPos.y = (int)n * CELL_HEIGHT;
+//    }
+//    else
+//    {
+//        _newPos.y = (int)(n + 1) * CELL_HEIGHT;
+//    }
+//    this->setPositionY(_newPos.y);
 }
 
 void Tank::addStep()

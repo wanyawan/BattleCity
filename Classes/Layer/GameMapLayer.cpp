@@ -39,10 +39,12 @@ GameMapLayer* GameMapLayer::create() {
 }
 
 bool GameMapLayer::init(){
-    bool result = LayerColor::initWithColor(Color4B(0, 0, 0, 255));
+    bool result = LayerColor::initWithColor(Color4B(0, 0, 150, 255));
     if (result) {
         _mapId = GameManager::sharedManager()->currentLevel();
         setupSubLayer();
+        setEdgeBody();
+        addContactListener();
     }
     return result;
 }
@@ -67,11 +69,14 @@ void GameMapLayer::setupSubLayer() {
         }
     }
     
+//    setContentSize(Size(32 * MAP_COL, 32 * MAP_ROW));
+    
+    
     //    int index = 1;
     //    string mapName = __String::createWithFormat("map%d.txt", index)->_string;
     //    auto data = FileUtils::getInstance()->getStringFromFile(mapName);
     
-        ifstream ifs;
+//        ifstream ifs;
 //        ifs.open(mapName,ios::binary);
     //    int i = 0;
     //    int j = 0;
@@ -84,6 +89,65 @@ void GameMapLayer::setupSubLayer() {
     //        //        line<<l;
     //        printf("line %s",line.c_str());
     //    }
+}
+
+void GameMapLayer::setEdgeBody()
+{
+    float width = 32 * MAP_COL;
+    float height = 32 * MAP_ROW;
+//    auto size = Size(32 * MAP_COL, 32 * MAP_ROW);
+    auto edgeSprite = Node::create();
+//    edgeSprite->setContentSize(size);
+//    auto body = PhysicsBody::createEdgeBox(size, PHYSICSBODY_MATERIAL_DEFAULT, 4, Vec2::ZERO);
+    Vec2 vec[] = {Vec2(0, 0),Vec2(0, height/2),Vec2(width/2, height/2),Vec2(width/2, 0)};
+    auto body = PhysicsBody::createEdgePolygon(vec, 4, PhysicsMaterial(1.0, 0, 0), 2);
+    body->setDynamic(false);
+    body->setCategoryBitmask(0x03);
+    body->setContactTestBitmask(0x03);
+    body->setCollisionBitmask(0x03);
+    body->setGroup(-1);
+//    body->setPosition(size.width/2, size.height/2);
+    edgeSprite->setPhysicsBody(body);
+    this->addChild(edgeSprite);
+//
+}
+
+void GameMapLayer::addContactListener()
+{
+    auto contactListener = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin = CC_CALLBACK_1(GameMapLayer::onContactBegin, this);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+}
+
+bool GameMapLayer::onContactBegin(cocos2d::PhysicsContact& contact)
+{
+    PhysicsBody *bodyA = (PhysicsBody *)contact.getShapeA()->getBody();
+    PhysicsBody *bodyB = (PhysicsBody *)contact.getShapeB()->getBody();
+    Sprite *spriteA = (Sprite *)bodyA->getNode();
+    Sprite *spriteB = (Sprite *)bodyB->getNode();
+    if(bodyA->getGroup() < 0 || bodyB->getGroup() < 0)
+    {
+        if(bodyA->getGroup() >= 0)
+        {
+            
+        } else if (bodyB->getGroup() >= 0)
+        {
+            
+        }
+    }else
+    {
+        
+    }
+    
+//    spriteA
+//    int tagA=spriteA->getTag();
+//    int tagB=spriteB->getTag();
+//    if(tagA==1&&tagB==2||tagA==2&&tagB==1)
+//    {
+//        spriteA->removeFromParent();
+//        spriteB->removeFromParent();
+//    }
+    return true;
 }
 
 void GameMapLayer::createMapCell(int row, int col, int type)
@@ -122,6 +186,14 @@ void GameMapLayer::createMapCell(int row, int col, int type)
         auto tag = row*100 + col;
         cell->setAnchorPoint(Vec2(0.0f, 1.0f));
         cell->setPosition(getPos(row, col));
+        
+        auto cellBody = PhysicsBody::createBox(cell->getContentSize());
+        cellBody->setCategoryBitmask(0x02);
+        cellBody->setContactTestBitmask(0x02);
+        cellBody->setCollisionBitmask(0x02);
+        cellBody->setGroup(0);
+        cell->setPhysicsBody(cellBody);
+        
         this->addChild(cell, zorder, tag);
     }
 }

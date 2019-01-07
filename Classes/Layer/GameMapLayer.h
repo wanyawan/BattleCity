@@ -42,6 +42,10 @@ private:
     int _map[MAP_ROW][MAP_COL];
     
     void setupSubLayer();
+    void setEdgeBody();
+    void addContactListener();
+    bool onContactBegin(cocos2d::PhysicsContact& contact);
+
     void createMapCell(int row, int col, int newType);
     std::string getSpriteName(int type);
 //    void setHomeWall(int type);

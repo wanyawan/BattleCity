@@ -37,10 +37,20 @@ PlayerTank* PlayerTank::create(int type)
 bool PlayerTank::init(int type)
 {
     _level = 1;
-    this->initWithSpriteFrameName("player1_1_1_1.png");
-    this->scheduleUpdate();
-    this->initPos();
-    return Tank::init(type);
+    bool result = Tank::init(type);
+    if (result) {
+        this->initWithSpriteFrameName("player1_1_1_1.png");
+        this->scheduleUpdate();
+        this->initPos();
+        auto body = PhysicsBody::createBox(this->getContentSize());
+        body->setCategoryBitmask(0x01);
+        body->setContactTestBitmask(0x01);
+        body->setCollisionBitmask(0x01);
+        body->setGroup(0);
+        body->setDynamic(true);
+        this->setPhysicsBody(body);
+    }
+    return result;
     //        _life = DataM::getInstance()->getPlayerLife();
 //    bool bRet = false;
 //    do
@@ -174,14 +184,15 @@ void PlayerTank::update(float dt)
 //            }
 //        }
 //    }
-    if(overlapCheck())
-    {
-        _newPos = _position;
-    }
-    if (collide())
-    {
-        _inertia = 0;
-    }
+    
+//    if(overlapCheck())
+//    {
+//        _newPos = _position;
+//    }
+//    if (collide())
+//    {
+//        _inertia = 0;
+//    }
     auto spriteFrameName = String::createWithFormat("player1_%d_%d_%d.png", _level, _direction, _step + 1)->getCString();
     auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(spriteFrameName);
     this->setSpriteFrame(frame);

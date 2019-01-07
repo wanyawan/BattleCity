@@ -53,7 +53,7 @@ void SceneManager::changeScene(SceneType sceneType, TransitionType transitionTyp
             scene = LevelScene::create();
             break;
         case SceneTypeGame:
-            scene = GameScene::create();
+            scene = GameScene::createWithPhysics();
             
             GameManager::sharedManager()->setCurrentGameScene( ((GameScene *)scene) );
             break;

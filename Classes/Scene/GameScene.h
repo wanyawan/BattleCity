@@ -16,8 +16,8 @@ class GameScene : public cocos2d::Scene
 public:
     GameScene();
     ~GameScene();
-    static GameScene* create();
-    virtual bool init();
+    static GameScene* createWithPhysics();
+    virtual bool initWithPhysics();
     
     virtual void layoutSubviews();
     virtual void onEnterTransitionDidFinish();

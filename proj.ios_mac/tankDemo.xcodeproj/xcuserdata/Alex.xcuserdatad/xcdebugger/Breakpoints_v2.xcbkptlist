@@ -16,96 +16,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprite/PlayerTank.cpp"
-            timestampString = "568267082.588263"
+            filePath = "../Classes/Scene/GameScene.cpp"
+            timestampString = "568543565.719193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "PlayerTank::update(float dt)"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "GameScene::layoutSubviews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprite/PlayerTank.cpp"
-            timestampString = "568267082.589741"
+            filePath = "../Classes/Layer/GameMapLayer.cpp"
+            timestampString = "568543565.719558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "PlayerTank::update(float dt)"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "GameMapLayer::onContactBegin(cocos2d::PhysicsContact&amp; contact)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprite/PlayerTank.cpp"
-            timestampString = "568267082.5900069"
+            filePath = "../Classes/Layer/GameMapLayer.cpp"
+            timestampString = "568543565.71962"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "PlayerTank::update(float dt)"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "GameMapLayer::onContactBegin(cocos2d::PhysicsContact&amp; contact)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprite/Tank.cpp"
-            timestampString = "561890648.789583"
+            filePath = "../Classes/Layer/GameMapLayer.cpp"
+            timestampString = "568543565.719677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "Tank::moveUp()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprite/PlayerTank.cpp"
-            timestampString = "568267082.590276"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "PlayerTank::update(float dt)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/Sprite/PlayerTank.cpp"
-            timestampString = "568267082.590506"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "PlayerTank::update(float dt)"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "GameMapLayer::onContactBegin(cocos2d::PhysicsContact&amp; contact)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

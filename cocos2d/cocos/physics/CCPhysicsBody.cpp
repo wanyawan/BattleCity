@@ -232,6 +232,8 @@ PhysicsBody* PhysicsBody::createEdgeSegment(const Vec2& a, const Vec2& b, const 
     return nullptr;
 }
 
+
+
 PhysicsBody* PhysicsBody::createEdgeBox(const Size& size, const PhysicsMaterial& material, float border/* = 1*/, const Vec2& offset)
 {
     PhysicsBody* body = new (std::nothrow) PhysicsBody();
